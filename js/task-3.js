@@ -1,35 +1,14 @@
-'use strict';
+const nameInput = document.querySelector("input#name-input");
+const nameOutput = document.querySelector("span#name-output");
+    
+nameInput.addEventListener("input", () => {
+    const normalizedName = nameInput.value.trim();
+    
+    if (normalizedName === "") {
+        nameOutput.textContent = "Anonymous";
+    }
 
-class StringBuilder {
-  #value;
-
-  constructor(initialValue) {
-    this.#value = initialValue;
-  }
-
-  getValue() {
-    return this.#value;
-  }
-
-  padEnd(str) {
-    this.#value = this.#value + str;
-  }
-
-  padStart(str) {
-    this.#value = str + this.#value;
-  }
-
-  padBoth(str) {
-   this.#value = str + this.#value + str;
-  }
-}
-
-
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
+    else {
+        nameOutput.textContent = normalizedName;
+    }
+    })
